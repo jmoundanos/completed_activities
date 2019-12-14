@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+  <div id="game">
+    <p id="guess">Press r, p or s</p>
+    <p id="wins"></p>
+    <p id="loses"></p>
+    <p id="tie"></p>
+  </div>
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var wins = 0;
+    var loses = 0;
+    var ties = 0;
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      // Alerts the key the user pressed (userGuess).
+      alert("User guess: " + userGuess);
+
+      // Alerts the Computer's guess.
+      alert("Computer guess: " + computerGuess);
+
+    
+    if(userGuess === 'r'){
+        if(computerGuess === 'r'){
+            ties++;
+        }
+        if(computerGuess === 'p'){
+            loses++;
+        }
+        if(computerGuess === 's'){
+            wins++;
+        }
+    }
+    if(userGuess === 'p'){
+        if(computerGuess === 'r'){
+            wins++;
+        }
+        if(computerGuess === 'p'){
+            ties++;
+        }
+        if(computerGuess === 's'){
+            loses++;
+        }
+    }
+    if(userGuess === 's'){
+        if(computerGuess === 'r'){
+            loses++;
+        }
+        if(computerGuess === 'p'){
+            wins++;
+        }
+        if(computerGuess === 's'){
+            ties++;
+        }
+    }
+    
+    document.getElementById("wins").innerHTML = "Wins: " + wins;
+    document.getElementById("loses").innerHTML = "Loses: " + loses;
+    document.getElementById("tie").innerHTML = "Tie: " + ties;
+    };
+  </script>
+
+</body>
+
+</html>
